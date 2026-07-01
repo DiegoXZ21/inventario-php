@@ -1,5 +1,5 @@
 <?php
-    class database
+    class Database
     {
         private static $connection = null;
 
@@ -26,7 +26,7 @@
                     die("Error: " . $e->getMessage());
                 }
             }
-            
+
             return self::$connection;
         }
     }
