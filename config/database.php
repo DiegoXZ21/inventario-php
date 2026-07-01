@@ -6,10 +6,10 @@
         public static function connect()
         {
             if (self::$connection === null) {
-                $host = 'localhost';
-                $dbname = 'inventario';
-                $user = 'root';
-                $pass = '';
+                $host = Config::DB_HOST;
+                $dbname = Config::DB_NAME;
+                $user = Config::DB_USER;
+                $pass = Config::DB_PASS;
 
                 try {
                     self::$connection = new PDO(
