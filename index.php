@@ -1,5 +1,5 @@
 <?php 
-    require_once 'config/database.php';
+    require_once 'core/Autoload.php';
     try{
         $db = Database::connect();
 
