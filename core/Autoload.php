@@ -4,7 +4,7 @@
         $baseDir = dirname(__DIR__) . '/';
 
         $paths = [
-            'app/models/',
+            'app/entities/',
             'app/controllers/',
             'app/middleware/',
             'config/'
