@@ -7,7 +7,12 @@
             'app/entities/',
             'app/controllers/',
             'app/middleware/',
-            'config/'
+            'app/repositories/',
+            'app/services/',
+            'app/validators/',
+            'app/views',
+            'config/',
+            'core/',
         ];
 
         foreach ($paths as $path) {

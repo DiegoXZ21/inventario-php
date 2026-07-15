@@ -3,14 +3,14 @@
     {
         public static function check()
         {
-            if(!isset($_SESSION['usuario'])){
+            if(!Session::has('usuario')){
                 header("Location: login.php");
                 exit;
             }
         }
         public static function guest()
         {
-            if(isset($_SESSION['usuario'])){
+            if(Session::has('usuario')){
                 header("Location: dashboard.php");
                 exit;
             }

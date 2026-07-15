@@ -1,39 +1,31 @@
 <?php 
     class AuthController 
     {
-        private $usuarioModel;
+        private AuthService $authService;
+        private LoginValidator $loginValidator;
 
         public function __construct()
         {
-            $this->usuarioModel = new Usuario();
+            $this->authService = new AuthService();
+            $this->loginValidator = new LoginValidator();
         }
 
-        public function login($email, $password)
+        public function login(string $email, string $password)
         {
-            $user = $this->usuarioModel->buscarPorEmail($email);
-
-            if(!$user){
-                return "Usuario no encontrado";
+            //Validamos los datos de entrada
+            $errors = $this->loginValidator->validate($email, $password);
+            if (!empty($errors))
+            {
+                return $errors;
             }
 
-            if(!password_verify($password, $user->password)){
-                return "Contraseña incorrecta";
-            }
-
-            $_SESSION['usuario'] = [
-                'id' => $user->id,
-                'nombre' => $user->nombre,
-                'email' => $user->email,
-                'rol' => $user->rol
-            ];
-
-            return true;
+            //Autenticamos al usuario
+            return $this->authService->login($email, $password);
         }
 
         public function logout()
         {
-            session_destroy();
-            header("Location: index.php");
+            $this->authService->logout();
         }
     }
 ?>

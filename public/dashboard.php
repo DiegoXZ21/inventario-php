@@ -1,11 +1,9 @@
 <?php
-    session_start();
-
     require_once '../core/Autoload.php';
 
     AuthMiddleware::check();
 
-    $user = $_SESSION["usuario"];
+    $user = Session::get('usuario');
 ?>
 
 <h1>Dashboard</h1>
